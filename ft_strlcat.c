@@ -6,7 +6,7 @@
 /*   By: ruisilva <ruisilva@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 13:25:27 by ruisilva          #+#    #+#             */
-/*   Updated: 2025/10/15 16:56:22 by ruisilva         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:06:46 by ruisilva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	}
 	return (dst_len + src_len);
 }
-
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	char dst[13] = "world";
-// 	printf("%zu", ft_strlcat(dst, "hello ", 13));
-// }

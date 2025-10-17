@@ -6,7 +6,7 @@
 /*   By: ruisilva <ruisilva@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:29:58 by ruisilva          #+#    #+#             */
-/*   Updated: 2025/10/15 15:59:57 by ruisilva         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:01:49 by ruisilva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,3 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(temp, nmemb * size);
 	return (temp);
 }
-
-// int	main(void)
-// {
-// 	char *str;
-// 	char *str2;
-
-// 	str = ft_calloc(1, 1);
-// 	free(str);
-// 	str2 = ft_calloc(SIZE_MAX, 0);
-// 	free(str2);
-// }

@@ -6,7 +6,7 @@
 /*   By: ruisilva <ruisilva@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/14 11:33:35 by ruisilva          #+#    #+#             */
-/*   Updated: 2025/10/15 18:15:21 by ruisilva         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:02:09 by ruisilva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,3 @@ static int	count_int(int n)
 	}
 	return (count);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	printf("Output: %s\n", ft_itoa(2147483647));
-// 	printf("Output: %s\n", ft_itoa(-2147483648));
-// 	printf("Output: %s\n", ft_itoa(0));
-// }

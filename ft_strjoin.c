@@ -6,7 +6,7 @@
 /*   By: ruisilva <ruisilva@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:26:49 by ruisilva          #+#    #+#             */
-/*   Updated: 2025/10/15 16:44:08 by ruisilva         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:06:42 by ruisilva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	*str = '\0';
 	return (init_str);
 }
-
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	printf("%s", ft_strjoin("hello ", "world"));
-// }

@@ -6,7 +6,7 @@
 /*   By: ruisilva <ruisilva@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:09:17 by ruisilva          #+#    #+#             */
-/*   Updated: 2025/10/15 11:53:21 by ruisilva         ###   ########.fr       */
+/*   Updated: 2025/10/17 19:01:43 by ruisilva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,3 @@ static int	isspace(int c)
 		return (1);
 	return (0);
 }
-
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int	main(void)
-// {
-// 	printf("Output: %d, Expected: %d\n",
-// ft_atoi("2147483647"), atoi("2147483647"));
-// 	printf("Output: %d, Expected: %d\n",
-// ft_atoi("-2147483648"), atoi("-2147483648"));
-// 	printf("Output: %d, Expected: %d\n",
-// ft_atoi("-+2147483647"), atoi("-+2147483647"));
-// }
