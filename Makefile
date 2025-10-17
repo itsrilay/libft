@@ -73,6 +73,6 @@ fclean: clean
 re: fclean all
 
 bonus: $(BONUS_OBJS)
-	@make OBJS="$(BONUS_OBJS)" all
+	@make OBJS="$(OBJS) $(BONUS_OBJS)" all
 
 .PHONY: all clean fclean re
