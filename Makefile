@@ -1,60 +1,48 @@
 NAME = libft.a
 
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-SRC =	ft_atoi.c \
-		ft_memchr.c \
-		ft_split.c \
-		ft_strncmp.c \
-		ft_bzero.c \
-		ft_memcmp.c \
-		ft_strchr.c \
-		ft_strnstr.c \
-		ft_calloc.c \
-		ft_memcpy.c \
-		ft_strdup.c \
-		ft_strrchr.c \
-		ft_isalnum.c \
-		ft_memmove.c \
-		ft_striteri.c \
-		ft_strtrim.c \
-		ft_isalpha.c \
-		ft_memset.c \
-		ft_strjoin.c \
-		ft_substr.c \
-		ft_isascii.c \
-		ft_putchar_fd.c \
-		ft_strlcat.c \
-		ft_tolower.c \
-		ft_isdigit.c \
-		ft_putendl_fd.c \
-		ft_strlcpy.c \
-		ft_toupper.c \
-		ft_isprint.c \
-		ft_putnbr_fd.c \
-		ft_strlen.c \
-		ft_itoa.c \
-		ft_putstr_fd.c \
-		ft_strmapi.c
+# ==== CORE LIBFT ====
+SRC_CORE = \
+    ft_atoi.c ft_atol.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
+    ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
+    ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+    ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c \
+    ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
+    ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
+    ft_tolower.c ft_toupper.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
+    ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
 
+SRC_CORE := $(addprefix src/, $(SRC_CORE))
+
+# ==== FT_PRINTF ====
+SRC_PRINTF = \
+    ft_printf.c \
+    print_specifier_fd.c \
+    utils/ftpf_base16_fd.c \
+    utils/ftpf_putchar_fd.c \
+    utils/ftpf_putnbr_fd.c \
+    utils/ftpf_putnbr_unsigned_fd.c \
+    utils/ftpf_putptr_fd.c \
+    utils/ftpf_putstr_fd.c
+
+SRC_PRINTF := $(addprefix ft_printf/, $(SRC_PRINTF))
+
+# ==== GNL ====
+SRC_GNL = \
+    get_next_line.c \
+    get_next_line_utils.c
+
+SRC_GNL := $(addprefix get_next_line/, $(SRC_GNL))
+
+# All sources
+SRC = $(SRC_CORE) $(SRC_PRINTF) $(SRC_GNL)
+
+# Objects
 OBJS = $(SRC:%.c=%.o)
 
-BONUS_SRC =	ft_lstadd_back_bonus.c \
-			ft_lstadd_front_bonus.c \
-			ft_lstclear_bonus.c \
-			ft_lstdelone_bonus.c \
-			ft_lstiter_bonus.c \
-			ft_lstlast_bonus.c \
-			ft_lstmap_bonus.c \
-			ft_lstnew_bonus.c \
-			ft_lstsize_bonus.c
-
-BONUS_OBJS = $(BONUS_SRC:%.c=%.o)
-
-INC_DIR = .
-
-CPPFLAGS = -I$(INC_DIR)
+INC = -Iincludes
 
 all: $(NAME)
 
@@ -62,17 +50,14 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CPPFLAGS) $(CCFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(BONUS_OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus: $(BONUS_OBJS)
-	@make OBJS="$(OBJS) $(BONUS_OBJS)" all
 
 .PHONY: all clean fclean re

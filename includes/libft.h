@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruisilva <ruisilva@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ruisilva <ruisilva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 15:33:09 by ruisilva          #+#    #+#             */
-/*   Updated: 2025/10/16 10:41:43 by ruisilva         ###   ########.fr       */
+/*   Created: 2025/11/26 18:20:43 by ruisilva          #+#    #+#             */
+/*   Updated: 2025/11/26 18:40:27 by ruisilva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,19 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/* ============================================================
+   STRUCTS
+   ============================================================ */
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+/* ============================================================
+   CORE LIBFT
+   ============================================================ */
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -45,6 +53,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strnstr(const char *big, const char *little,
 						size_t len);
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
@@ -68,5 +77,19 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+char				*get_next_line(int fd);
+int					ft_printf(int fd, const char *format, ...);
+
+/* ============================================================
+   FT_PRINTF
+   ============================================================ */
+
+int					ft_printf(int fd, const char *format, ...);
+
+/* ============================================================
+   GNL
+   ============================================================ */
+
+char				*get_next_line(int fd);
 
 #endif
