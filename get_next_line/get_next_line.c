@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ruisilva <ruisilva@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ruisilva <ruisilva@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 15:21:44 by ruisilva          #+#    #+#             */
-/*   Updated: 2025/11/26 18:39:04 by ruisilva         ###   ########.fr       */
+/*   Updated: 2025/10/23 14:25:40 by ruisilva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_to_newline(int fd, char *stash);
-static char	*get_line(char **stash);
-static char	*join_free(char *stash, char *buf);
+char	*read_to_newline(int fd, char *stash);
+char	*extract_line(char **stash);
+char	*join_free(char *stash, char *buf);
 
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash[OPEN_MAX] = {NULL};
 	char		*line;
 	char		*temp;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!stash)
+	if (!stash[fd])
 	{
-		stash = gnl_strdup("");
-		if (!stash)
+		stash[fd] = gnl_strdup("");
+		if (!stash[fd])
 			return (NULL);
 	}
-	temp = read_to_newline(fd, stash);
+	temp = read_to_newline(fd, stash[fd]);
 	if (!temp)
-		return (stash = NULL, NULL);
-	stash = temp;
-	if (*stash == '\0')
-		return (free(stash), stash = NULL, NULL);
-	line = get_line(&stash);
+		return (stash[fd] = NULL, NULL);
+	stash[fd] = temp;
+	if (*stash[fd] == '\0')
+		return (free(stash[fd]), stash[fd] = NULL, NULL);
+	line = extract_line(&stash[fd]);
 	return (line);
 }
 
-static char	*read_to_newline(int fd, char *stash)
+char	*read_to_newline(int fd, char *stash)
 {
 	ssize_t	bytes_read;
 	char	*buf;
@@ -67,7 +67,7 @@ static char	*read_to_newline(int fd, char *stash)
 	return (stash);
 }
 
-static char	*get_line(char **stash)
+char	*extract_line(char **stash)
 {
 	char	*n_ptr;
 	int		n_len;
@@ -90,7 +90,7 @@ static char	*get_line(char **stash)
 	return (line);
 }
 
-static char	*join_free(char *stash, char *buf)
+char	*join_free(char *stash, char *buf)
 {
 	char	*temp;
 
